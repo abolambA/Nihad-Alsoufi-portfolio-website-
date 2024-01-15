@@ -1,46 +1,82 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Nihad Alsoufi</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-	<meta name="author" content="freehtml5.co" />
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nihad Alsoufi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
+    <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+    <meta name="author" content="freehtml5.co" />
+    <meta property="og:title" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:description" content=""/>
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
 
-	<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Modernizr JS -->
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Include the Email.js library -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <script>
+		emailjs.init("user_your_emailjs_user_id"); // Replace with your Email.js user ID
 	
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
-
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
-
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
-
-	</head>
-	<body>
-		
+		function sendEmail() {
+			console.log("Sending email...");
+	
+			var form = document.getElementById("contactForm");
+	
+			// Gather form data
+			var data = new FormData(form);
+			var params = {
+				from_name: data.get("fname") + " " + data.get("lname"),
+				from_email: data.get("email"),
+				to_email: "mn121529@gmail.com", // Replace with the desired recipient email address
+				subject: data.get("subject"),
+				message: data.get("message"),
+			};
+	
+			console.log("Email parameters:", params);
+	
+			// Send email using Email.js
+			emailjs.send("your_emailjs_service_id", "your_emailjs_template_id", params)
+				.then(function(response) {
+					console.log("Email sent successfully:", response);
+					// You can redirect or show a success message here
+				}, function(error) {
+					console.error("Email sending failed:", error);
+					// Handle the error, e.g., show an error message to the user
+				});
+	
+			// Prevent the default form submission
+			return false;
+		}
+	</script>	
+</head>
+<body>
 	<div class="fh5co-loader"></div>
 	
 	<div id="page">	
@@ -349,9 +385,9 @@
 	</div>
 
 	<div id="fh5co-consult">
-		<div class="choose animate-box">
-			<h2>Contact Me!</h2>
-			<form action="process_form.php" method="post">
+        <div class="choose animate-box">
+            <h2>Contact Me!</h2>
+            <form id="contactForm" onsubmit="return sendEmail()">
 				<div class="row form-group">
 					<div class="col-md-6">
 						<input type="text" name="fname" class="form-control" placeholder="Your firstname" required>
@@ -381,21 +417,18 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<input type="submit" value="Send Message" class="btn btn-primary">
-				</div>
-	
-			</form>
-		</div>
-	</div>
-	
-
+                    <input type="submit" value="Send Message" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>	
 	</div>
 	
 	<div id="fh5co-footer">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<p>&copy; 2017 Free HTML5 Template. All Rights Reserved. <br>Designed by <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.com" target="_blank">Unsplash</a></p>
+					<p>&copy; 2024 All Rights Reserved. <br>Designed by Nihad Alsoufi </p>
 				</div>
 			</div>
 		</div>
@@ -423,6 +456,9 @@
 	
 	<!-- Main -->
 	<script src="js/main.js"></script>
+	<!-- Include the Email.js library -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
 
 	</body>
 </html>

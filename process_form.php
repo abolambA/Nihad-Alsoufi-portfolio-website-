@@ -1,7 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Replace 'your_email@example.com' with the actual email address where you want to receive the form submissions
-    $to = "your_email@example.com";
+    $to = "mn121529@gmail.com";
     $subject = $_POST["subject"];
     $message = "Name: {$_POST['fname']} {$_POST['lname']}\n";
     $message .= "Email: {$_POST['email']}\n";
